@@ -4,19 +4,19 @@ import { Card } from "react-bootstrap";
 function HistoryCard({ totalCalories, totalWeight, name, optimalItems }) {
     return (
         <Card
-            className="mb-2"
+            className="mb-3 app-container-card"
             border="primary"
         >
             <Card.Header><h3>{name}</h3></Card.Header>
             <Card.Body>
                 <Card.Text>
-                    Total Calories : {totalCalories}
+                    <strong>Total Calories :</strong> {totalCalories}
                 </Card.Text>
                 <Card.Text>
-                    Total Weight: {totalWeight}
+                    <strong>Total Weight:</strong> {totalWeight}
                 </Card.Text>
                 <Card.Text>
-                    Optimal Items: {optimalItems.join(', ')}
+                    <strong>Optimal Items:</strong> {optimalItems.join(', ')}
                 </Card.Text>
             </Card.Body>
         </Card>)

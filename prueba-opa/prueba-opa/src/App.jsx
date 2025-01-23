@@ -1,51 +1,56 @@
-// import { useState } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
 import { useState, useEffect } from 'react';
-import './App.css'
+import './App.css';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
-import ButtonAddModal from './components/button-add-modal';
 import Col from 'react-bootstrap/Col';
+import ButtonAddModal from './components/button-add-modal';
 import HistoryCard from './components/history-card';
 
 function App() {
   const [history, setHistory] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3000/trips') 
+    fetch('http://localhost:3000/trips')
       .then((response) => response.json())
       .then((data) => {
-        setHistory(data); 
+        setHistory(data);
       })
       .catch((error) => {
         console.error('Error fetching history:', error);
       });
-  }, []); 
+  }, []);
 
   const handleAddTrip = (newTrip) => {
     setHistory((prevHistory) => [...prevHistory, newTrip]);
   };
 
   return (
-    <main>
-      <Container fluid>
-        <Row>
-          <Col xs={8} ><h1>Calculator history</h1></Col>
-          <Col xs={4}> 
-            <ButtonAddModal onSave={handleAddTrip}/>
+    <main className="app-container">
+      <Container>
+        <Row className="align-items-center mb-5">
+          <Col xs={12} md={8}>
+            <h1>Calculator History</h1>
+          </Col>
+          <Col xs={12} md={4} className="text-md-end text-center">
+            <ButtonAddModal onSave={handleAddTrip} />
           </Col>
         </Row>
         <Row>
           <Col>
-            {history.map((el, index) => (
-              <HistoryCard totalCalories={el.totalCalories} totalWeight={el.totalWeight} name={el.name} optimalItems={el.optimalItems} key={index}/>
-            ))}
+            {history.length > 0 ? history.map((el, index) => (
+              <HistoryCard
+                totalCalories={el.totalCalories}
+                totalWeight={el.totalWeight}
+                name={el.name}
+                optimalItems={el.optimalItems}
+                key={index}
+              />
+            )): <p>No trips calculated</p>}
           </Col>
         </Row>
       </Container>
     </main>
-  )
+  );
 }
 
-export default App
+export default App;
