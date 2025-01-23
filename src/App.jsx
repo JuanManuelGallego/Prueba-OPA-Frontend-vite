@@ -10,7 +10,7 @@ function App() {
   const [history, setHistory] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3000/trips')
+    fetch('https://prueba-opa-backend-nodejs-production.up.railway.app/trips')
       .then((response) => response.json())
       .then((data) => {
         setHistory(data);
