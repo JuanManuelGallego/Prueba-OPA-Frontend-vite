@@ -22,7 +22,7 @@ function App() {
         console.error('Error fetching history:', error);
       });
   }, []); 
-  
+
   const handleAddTrip = (newTrip) => {
     setHistory((prevHistory) => [...prevHistory, newTrip]);
   };
@@ -39,7 +39,7 @@ function App() {
         <Row>
           <Col>
             {history.map((el, index) => (
-              <HistoryCard totalCalories={el.totalCalories} totalWeight={el.totalWeight} name={el.name} key={index}/>
+              <HistoryCard totalCalories={el.totalCalories} totalWeight={el.totalWeight} name={el.name} optimalItems={el.optimalItems} key={index}/>
             ))}
           </Col>
         </Row>

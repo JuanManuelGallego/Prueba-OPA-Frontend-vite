@@ -9,7 +9,7 @@ function FromModal() {
                 <Col xs={4}>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlInput">
                         <Form.Label>Name</Form.Label>
-                        <Form.Control type="text" placeholder="My Trip" />
+                        <Form.Control type="text" placeholder="Trip name" />
                     </Form.Group>
                 </Col>
                 <Col xs={4}>
@@ -31,7 +31,7 @@ function FromModal() {
                 <Col xs={4}>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlInput3">
                         <Form.Label>Name</Form.Label>
-                        <Form.Control type="text" placeholder="5" />
+                        <Form.Control type="text" placeholder="Item name" />
                     </Form.Group>
                 </Col>
                 <Col xs={3}>

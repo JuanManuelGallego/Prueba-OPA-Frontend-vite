@@ -35,10 +35,10 @@ function ButtonAddModal({ onSave }) {
           name: formData.name,
           items: [
             {
-              name: formData.name,
-              weight: formData.weight,
-              calories: formData.calories,
-            },
+              name: formData.items[0].name,
+              weight: formData.items[0].weight,
+              calories: formData.items[0].calories,
+            },  
           ],
         }),
       })
