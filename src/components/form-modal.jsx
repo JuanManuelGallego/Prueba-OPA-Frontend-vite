@@ -1,43 +1,38 @@
-/* eslint-disable react/prop-types */
 import { Button, Col, Row } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 
 function FromModal({ formData, setFormData }) {
-       const handleAddItem = () => {
+    const numberRegex = /^\d+$/;
+
+    const validateNumber = (value) => value.length === 0 || numberRegex.test(value);
+
+    const handleAddItem = () => {
         setFormData((prev) => ({
-            ...prev, items: [...formData.items, {name: '', calories: '', weight: ''}]
+            ...prev, items: [...formData.items, { name: '', calories: '', weight: '' }]
         }))
     };
 
     const handleItemChange = (index, field, event, isNumber = false) => {
         const value = event.target.value;
-        if (isNumber) {
-            const regexp = /^\d+$/
-            if (isNumber && value.length > 0 && regexp && !regexp.test(value)) {
-                event.preventDefault();
-                return
-            }
+        if (isNumber && !validateNumber(value)) {
+            event.preventDefault();
+            return
         }
+
         const items = [...formData.items];
         items[index][field] = event.target.value;
-        setFormData((prev) => ({
-            ...prev, items: [...items]
-        }))
+        setFormData((prev) => ({...prev, items: [...items]}))
     };
 
     const handleFieldChange = (field, event, isNumber = false) => {
         const value = event.target.value;
-        if (isNumber) {
-            const regexp = /^\d+$/
-            if (isNumber && value.length > 0 && regexp && !regexp.test(value)) {
-                event.preventDefault();
-                return
-            }
+        if (isNumber && !validateNumber(value)) {
+            event.preventDefault();
+            return
         }
         setFormData((prev) => ({ ...prev, [field]: value }));
     };
 
-    console.log(formData);
     return (
         <Form>
             <h4>Trip Parameters</h4>

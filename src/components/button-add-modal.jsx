@@ -1,26 +1,24 @@
-/* eslint-disable react/prop-types */
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import FromModal from './form-modal';
 import { toast } from 'react-toastify';
 function ButtonAddModal({ onSave }) {
+    const emptyItem = {name: '', calories: '', weight: ''};
     const [show, setShow] = useState(false);
     const [formData, setFormData] = useState({
         name: '',
         minCalories: '',
         maxWeight: '',
-        items: [{name: '', calories: '', weight: ''}],
+        items: [emptyItem],
     });
     
     const disableButton = !formData.name || !formData.minCalories || !formData.maxWeight || formData.items.some((el) => !el.name || !el.calories || !el.weight);
-    console.log(disableButton);    
-
     const handleClose = () => {
         setFormData({name: '',
             minCalories: '',
             maxWeight: '',
-            items: [{name: '', calories: '', weight: ''}]})
+            items: [emptyItem]})
         setShow(false);
     }
 
@@ -43,7 +41,7 @@ function ButtonAddModal({ onSave }) {
                     name: '',
                     minCalories: '',
                     maxWeight: '',
-                    items: [{name: '', calories: '', weight: ''}],
+                    items: [emptyItem],
                 });
                 setShow(false);
                 toast.success(`Trip ${formData.name} added successfully`);
