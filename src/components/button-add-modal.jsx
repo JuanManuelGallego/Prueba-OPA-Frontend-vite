@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import FromModal from './form-modal';
-import { toast } from 'react-toastify';
+//import { toast } from 'react-toastify';
 function ButtonAddModal({ onSave }) {
     const [show, setShow] = useState(false);
     const [formData, setFormData] = useState({
@@ -46,11 +46,11 @@ function ButtonAddModal({ onSave }) {
                     items: [{name: '', calories: '', weight: ''}],
                 });
                 setShow(false);
-                toast.success(`Trip ${formData.name} added successfully`);
+                //toast.success(`Trip ${formData.name} added successfully`);
             })
             .catch((error) => {
                 console.error('Error:', error);
-                toast.error(`Trip ${formData.name} could not be saved, please try again`);
+                //toast.error(`Trip ${formData.name} could not be saved, please try again`);
             });
     };
 
