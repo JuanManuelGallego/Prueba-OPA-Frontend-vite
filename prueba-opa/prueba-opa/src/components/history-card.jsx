@@ -16,7 +16,7 @@ function HistoryCard({ totalCalories, totalWeight, name, optimalItems }) {
                     Total Weight: {totalWeight}
                 </Card.Text>
                 <Card.Text>
-                    Optimal Items: {optimalItems}
+                    Optimal Items: {optimalItems.join(', ')}
                 </Card.Text>
             </Card.Body>
         </Card>)
